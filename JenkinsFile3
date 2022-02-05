@@ -1,16 +1,15 @@
-node {
- stage('checkout') {
-  checkout scm
- }
- stage('deploy') {
-  echo 'main' + env.main
-
-  if (env.main.startsWith("Feature_")) {
-   echo "Deploying to Dev environment after build"
-  } else if (env.main.startsWith("Release_")) {
-   echo "Deploying to Stage after build and Dev Deployment"
-  } else if (env.main.startsWith("master")) {
-   echo "Deploying to PROD environment"
-  }
- }
+pipeline {
+   agent any
+   stages {
+       stage('Build Code') {
+           steps {
+               sh 'Build Artifacts'
+           }
+       }
+      stage('Deploy Code') {
+          steps {
+               sh 'Deploy Code'
+          }
+      }
+   }
 }
