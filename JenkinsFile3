@@ -3,7 +3,7 @@ node {
   checkout scm
  }
  stage('deploy') {
-  echo 'branch name ' + env.main
+  echo 'main' + env.main
 
   if (env.main.startsWith("Feature_")) {
    echo "Deploying to Dev environment after build"
