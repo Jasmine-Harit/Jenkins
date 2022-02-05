@@ -5,7 +5,7 @@ node {
  stage('deploy') {
   echo 'branch name ' + env.main
 
-  if (env.BRANCH_NAME.startsWith("Feature_")) {
+  if (env.main.startsWith("Feature_")) {
    echo "Deploying to Dev environment after build"
   } else if (env.main.startsWith("Release_")) {
    echo "Deploying to Stage after build and Dev Deployment"
